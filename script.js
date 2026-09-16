@@ -27,29 +27,31 @@ const nomiCategorie = {
   dolci: "Dolci"
 };
 
-
-// ===== DATI DI OGNI PIATTO (nome, descrizione, ingredienti, allergeni, prezzo) =====
+// ===== DATI DI OGNI PIATTO (nome, descrizione, ingredienti, allergeni, prezzo, immagine) =====
 const datiPiatti = {
   patatine: {
     nome: "Patatine fritte",
     prezzo: "4,00 €",
     descrizione: "Patatine stick locali, fritte al momento fino a doratura perfetta, croccanti fuori e morbide dentro.",
     ingredienti: ["Patate", "Olio di semi di girasole", "Sale"],
-    allergeni: ["Nessuno"]
+    allergeni: ["Nessuno"],
+    immagine: "img/patatine.jpg"
   },
   montanara: {
     nome: "Montanara",
     prezzo: "7,50 €",
     descrizione: "Impasto di pizza fritto, condito con salsa di pomodoro fresco e basilico. Un classico intramontabile della tradizione napoletana.",
     ingredienti: ["Farina", "Pomodoro", "Basilico", "Olio extravergine d'oliva"],
-    allergeni: ["Glutine"]
+    allergeni: ["Glutine"],
+    immagine: "img/montanara.jpg"
   },
   frittatina: {
     nome: "Frittatina di pasta",
     prezzo: "7,50 €",
     descrizione: "Bucatini conditi con besciamella, piselli, prosciutto cotto e provola affumicata, impanati e fritti.",
     ingredienti: ["Bucatini", "Besciamella", "Piselli", "Prosciutto cotto", "Provola affumicata", "Uova", "Pangrattato"],
-    allergeni: ["Glutine", "Latte", "Uova"]
+    allergeni: ["Glutine", "Latte", "Uova"],
+    immagine: "img/frittatina.jpg"
   },
   margherita: {
     nome: "Margherita",
@@ -64,39 +66,42 @@ const datiPiatti = {
     prezzo: "7,50 €",
     descrizione: "Pomodoro, mozzarella e salame piccante, per chi ama un tocco di peperoncino in più.",
     ingredienti: ["Farina", "Pomodoro", "Mozzarella fiordilatte", "Salame piccante"],
-    allergeni: ["Glutine", "Latte"]
+    allergeni: ["Glutine", "Latte"],
+    immagine: "img/diavola.jpg"
   },
   quattroformaggi: {
     nome: "Quattro Formaggi",
     prezzo: "8,00 €",
     descrizione: "Un tripudio di formaggi: mozzarella, gorgonzola, parmigiano e fontina, per un gusto ricco e deciso.",
     ingredienti: ["Farina", "Mozzarella fiordilatte", "Gorgonzola", "Parmigiano Reggiano", "Fontina"],
-    allergeni: ["Glutine", "Latte"]
+    allergeni: ["Glutine", "Latte"],
+    immagine: "img/quattroformaggi.jpg"
   },
   cocacola: {
     nome: "Coca Cola",
     prezzo: "3,00 €",
     descrizione: "Bottiglietta da 33 cl, servita fredda.",
     ingredienti: ["Acqua gassata", "Zucchero", "Anidride carbonica", "Aromi"],
-    allergeni: ["Nessuno"]
+    allergeni: ["Nessuno"],
+    immagine: "img/cocacola.jpg"
   },
   estathe: {
     nome: "EstaTHE",
     prezzo: "3,00 €",
     descrizione: "Bottiglietta da 33 cl, gusto pesca.",
     ingredienti: ["Acqua", "Zucchero", "Estratto di tè", "Succo di pesca"],
-    allergeni: ["Nessuno"]
+    allergeni: ["Nessuno"],
+    immagine: "img/estathe.jpg"
   },
   tiramisu: {
     nome: "Tiramisù",
     prezzo: "3,00 €",
     descrizione: "Il classico dolce italiano: savoiardi imbevuti di caffè, crema al mascarpone e cacao amaro in polvere.",
     ingredienti: ["Savoiardi", "Mascarpone", "Uova", "Caffè", "Zucchero", "Cacao amaro"],
-    allergeni: ["Glutine", "Latte", "Uova"]
+    allergeni: ["Glutine", "Latte", "Uova"],
+    immagine: "img/tiramisu.jpg"
   }
 };
-
-
 
 // Apri/chiudi il pannello laterale
 function apriMenu() {
@@ -139,6 +144,28 @@ document.querySelectorAll('.link-nav[data-target]').forEach(link => {
   });
 });
 
+
+
+
+
+const titoliSottosezione = document.querySelectorAll(".titolo-sottosezione");
+
+// Funzione unica di filtro: nasconde/mostra piatti E titoli di sezione
+function filtraCategoria(categoria) {
+  titoloCategoria.textContent = nomiCategorie[categoria];
+
+  piatti.forEach(piatto => {
+    piatto.style.display = (categoria === "tutte" || piatto.dataset.categoria === categoria) ? "flex" : "none";
+  });
+
+  // I titoli di sezione (es. "SFIZIOSERIE") servono solo per orientarsi
+  // nella vista Menù Completo; se filtri una singola categoria, il titolo
+  // grande in alto la indica già, quindi qui li nascondiamo sempre
+  titoliSottosezione.forEach(titolo => {
+    titolo.style.display = (categoria === "tutte") ? "block" : "none";
+  });
+}
+
 // Click sulle voci del sottomenù (categorie di piatti)
 document.querySelectorAll('.sottomenu .link-nav').forEach(link => {
   link.addEventListener("click", (e) => {
@@ -148,23 +175,24 @@ document.querySelectorAll('.sottomenu .link-nav').forEach(link => {
     link.classList.add("attivo");
     toggleMenu.classList.add("attivo");
 
-    const categoria = link.dataset.categoria;
-
     mostraSezione("menu");
-    titoloCategoria.textContent = nomiCategorie[categoria];
-
-
-    piatti.forEach(piatto => {
-      if (categoria === "tutte" || piatto.dataset.categoria === categoria) {
-        piatto.style.display = "flex";
-      } else {
-        piatto.style.display = "none";
-      }
-    });
+    filtraCategoria(link.dataset.categoria);
 
     chiudiMenu();
   });
 });
+
+// Click sui titoli di sezione dentro il Menù Completo (es. "SFIZIOSERIE")
+titoliSottosezione.forEach(titolo => {
+  titolo.addEventListener("click", () => {
+    filtraCategoria(titolo.dataset.categoria);
+  });
+});
+
+
+
+
+
 
 // ===== APERTURA PAGINA DI DETTAGLIO =====
 const detNome = document.getElementById("dett-nome");
@@ -174,7 +202,6 @@ const detIngredienti = document.getElementById("dett-ingredienti");
 const detAllergeni = document.getElementById("dett-allergeni");
 const btnIndietro = document.getElementById("btn-indietro");
 const detImmagine = document.getElementById("dett-immagine");
-
 
 piatti.forEach(piatto => {
   piatto.addEventListener("click", () => {
@@ -207,7 +234,46 @@ piatti.forEach(piatto => {
   });
 });
 
+
+
+
+
 // Bottone "Torna al menù"
 btnIndietro.addEventListener("click", () => {
   mostraSezione("menu");
+});
+
+
+
+
+// ===== BOTTONE "VAI AL MENÙ" NELLA HOME =====
+// Apre la sidebar direttamente con il sottomenù delle categorie già visibile
+const btnVaiMenu = document.getElementById("btn-vai-menu");
+
+btnVaiMenu.addEventListener("click", () => {
+  apriMenu();
+  sottomenu.classList.remove("nascosto");
+  voceEspandibile.classList.add("aperta");
+});
+
+// ===== SCHEDE CLICCABILI NELLA HOME (mini-vetrina sotto la copertina) =====
+document.querySelectorAll(".scheda-sezione").forEach(scheda => {
+  scheda.addEventListener("click", () => {
+    const target = scheda.dataset.target;
+
+    // Se la scheda cliccata è "Scopri il Menù", apre il sottomenù invece di
+    // andare al menù completo mischiato
+    if (target === "menu") {
+      apriMenu();
+      sottomenu.classList.remove("nascosto");
+      voceEspandibile.classList.add("aperta");
+      return;
+    }
+
+    document.querySelectorAll("#sidebar a").forEach(l => l.classList.remove("attivo"));
+    const linkCorrispondente = document.querySelector(`.link-nav[data-target="${target}"]`);
+    if (linkCorrispondente) linkCorrispondente.classList.add("attivo");
+
+    mostraSezione(target);
+  });
 });

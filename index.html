@@ -20,8 +20,6 @@
   <!-- Sfondo scuro quando il menù è aperto -->
   <div id="overlay"></div>
 
-
-
   <!-- Pannello laterale -->
   <nav id="sidebar">
     <h2>🍕 Da Mario</h2>
@@ -51,14 +49,29 @@
 
 
 
-
-
   <!-- SEZIONE HOME -->
   <section id="home">
-    <div class="hero">
-      <div class="hero-testo">
+    <div class="copertina">
+      <div class="copertina-testo">
         <h1>Pizzeria Da Mario</h1>
         <p>Tradizione napoletana dal 1987</p>
+        <button id="btn-vai-menu" class="pulsante-principale">Vai al Menù</button>
+      </div>
+      <div class="freccia-scorri">▾</div>
+    </div>
+
+    <div class="sezioni-home">
+      <div class="scheda-sezione" data-target="chi-siamo">
+        <h3>La nostra storia</h3>
+        <p>Scopri chi siamo e da dove veniamo</p>
+      </div>
+      <div class="scheda-sezione" data-target="menu">
+        <h3>Scopri il Menù</h3>
+        <p>Pizze, sfizioserie, dolci e bevande</p>
+      </div>
+      <div class="scheda-sezione" data-target="contattaci">
+        <h3>Vieni a trovarci</h3>
+        <p>Dove siamo e come contattarci</p>
       </div>
     </div>
   </section>
@@ -67,12 +80,10 @@
 
 
 
-
-
   <!-- SEZIONE CHI SIAMO -->
   <section id="chi-siamo" class="nascosto">
-    <div class="hero hero-piccolo">
-      <div class="hero-testo">
+    <div class="copertina copertina-piccola">
+      <div class="copertina-testo">
         <h1>Chi Siamo</h1>
       </div>
     </div>
@@ -95,14 +106,15 @@
 
 
 
-
   <!-- SEZIONE MENÙ -->
   <section id="menu-page" class="nascosto">
     <h2 id="titolo-categoria">Menù Completo</h2>
 
     <main id="menu">
-
+	
       <!-- SFIZIOSERIE -->
+      <!-- SFIZIOSERIE -->
+      <h3 class="titolo-sottosezione" data-categoria="sfizioserie">SFIZIOSERIE</h3>
       <div class="piatto" data-categoria="sfizioserie" data-id="patatine">
         <h3>Patatine fritte</h3>
         <p>Patatine stick locali</p>
@@ -122,6 +134,7 @@
       </div>
 
       <!-- PIZZE CLASSICHE -->
+      <h3 class="titolo-sottosezione" data-categoria="classiche">PIZZE CLASSICHE</h3>
       <div class="piatto" data-categoria="classiche" data-id="margherita">
         <h3>Margherita</h3>
         <p>Pomodoro, mozzarella, basilico</p>
@@ -135,6 +148,7 @@
       </div>
 
       <!-- PIZZE GOURMET -->
+      <h3 class="titolo-sottosezione" data-categoria="gourmet">PIZZE GOURMET</h3>
       <div class="piatto" data-categoria="gourmet" data-id="quattroformaggi">
         <h3>Quattro Formaggi</h3>
         <p>Mozzarella, gorgonzola, parmigiano, fontina</p>
@@ -142,6 +156,7 @@
       </div>
 
       <!-- BEVANDE -->
+      <h3 class="titolo-sottosezione" data-categoria="bevande">BEVANDE</h3>
       <div class="piatto" data-categoria="bevande" data-id="cocacola">
         <h3>Coca Cola</h3>
         <p>33 cl</p>
@@ -155,6 +170,7 @@
       </div>
 
       <!-- DOLCI -->
+      <h3 class="titolo-sottosezione" data-categoria="dolci">DOLCI</h3>
       <div class="piatto" data-categoria="dolci" data-id="tiramisu">
         <h3>Tiramisù</h3>
         <p>Crema, savoiardi, caffè, cacao</p>
@@ -163,7 +179,6 @@
 
     </main>
   </section>
-
 
 
 
@@ -199,8 +214,8 @@
 
   <!-- SEZIONE CONTATTACI -->
   <section id="contattaci" class="nascosto">
-    <div class="hero hero-piccolo">
-      <div class="hero-testo">
+    <div class="copertina copertina-piccola">
+      <div class="copertina-testo">
         <h1>Contattaci</h1>
       </div>
     </div>
@@ -214,6 +229,10 @@
       <p>Lunedì - Domenica: 12:00 - 15:00 / 19:00 - 23:30</p>
     </div>
   </section>
+
+
+
+
 
   <script src="script.js"></script>
 </body>

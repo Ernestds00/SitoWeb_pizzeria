@@ -1,5 +1,6 @@
 :root {
   --colore-sfondo-chiaro: #fdf6ec;
+  --colore-marrone: #5c3a21
 }
 
 * {
@@ -40,6 +41,10 @@ body {
   display: block;
 }
 
+
+
+
+
 /* ===== OVERLAY SCURO ===== */
 #overlay {
   position: fixed;
@@ -55,6 +60,11 @@ body {
   opacity: 1;
   pointer-events: auto;
 }
+
+
+
+
+
 
 /* ===== PANNELLO LATERALE ===== */
 #sidebar {
@@ -131,25 +141,29 @@ body {
   opacity: 0.9;
 }
 
-/* ===== HERO (usato da Home, Chi Siamo, Contattaci) — resta SCURO ===== */
-.hero {
+
+
+
+
+/* ===== COPERTINA (usata da Home, Chi Siamo, Contattaci) — resta SCURA ===== */
+.copertina {
   height: 100vh;
   background:
     linear-gradient(rgba(20,10,5,0.55), rgba(20,10,5,0.55)),
-    url('img/hero.jpg') center/cover no-repeat;
-  background-color: #3b2417; /* colore di riserva finché non aggiungi img/hero.jpg */
+    url('img/copertina.jpg') center/cover no-repeat;
+  background-color: #3b2417; /* colore di riserva finché non aggiungi img/copertina.jpg */
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+  position: relative;
 }
 
-.hero-piccolo {
+.copertina-piccola {
   height: 45vh;
 }
 
-
-.hero-testo h1 {
+.copertina-testo h1 {
   font-family: 'Playfair Display', serif;
   font-size: 3rem;
   color: #fdf6ec;
@@ -157,7 +171,7 @@ body {
   animation: arrivaAddosso 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 
-.hero-testo p {
+.copertina-testo p {
   color: #e0a458;
   font-size: 1.2rem;
   letter-spacing: 1px;
@@ -176,6 +190,104 @@ body {
   }
 }
 
+
+
+
+
+/* ===== BOTTONE "VAI AL MENÙ" NELLA HOME ===== */
+.pulsante-principale {
+  margin-top: 25px;
+  background-color: #b3282d;
+  color: white;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  opacity: 0;
+  animation: arrivaAddosso 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: 0.5s;
+}
+
+.pulsante-principale:hover {
+  background-color: #8f2024;
+  transform: translateY(-2px);
+}
+
+
+
+
+
+/* ===== FRECCIA CHE INDICA DI SCORRERE VERSO IL BASSO ===== */
+.freccia-scorri {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fdf6ec;
+  font-size: 1.8rem;
+  animation: rimbalza 1.6s ease-in-out infinite;
+  opacity: 0.85;
+}
+
+@keyframes rimbalza {
+  0%, 100% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, 10px);
+  }
+}
+
+
+
+
+
+/* ===== TRE SCHEDE SOTTO LA COPERTINA NELLA HOME ===== */
+.sezioni-home {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 50px 20px;
+  background-color: var(--colore-sfondo-chiaro);
+}
+
+.scheda-sezione {
+  background: white;
+  border-radius: 12px;
+  padding: 25px 20px;
+  flex: 1 1 220px;
+  max-width: 260px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.scheda-sezione:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+.scheda-sezione h3 {
+  font-family: 'Playfair Display', serif;
+  color: #b3282d;
+  margin-bottom: 8px;
+  font-size: 1.15rem;
+}
+
+.scheda-sezione p {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.4;
+}
 
 
 
@@ -216,6 +328,10 @@ body {
   margin-bottom: 18px;
 }
 
+
+
+
+
 /* ===== SEZIONE MENÙ — sfondo chiaro uniforme ===== */
 #menu-page {
   padding: 100px 15px 40px;
@@ -237,6 +353,31 @@ body {
   gap: 15px;
 }
 
+
+
+
+
+.titolo-sottosezione {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: var(--colore-marrone);
+  text-align: left;
+  margin: 20px 0 8px;
+  padding-bottom: 4px;
+  border-bottom: 2px solid #e0a458;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.titolo-sottosezione:hover {
+  opacity: 0.7;
+}
+
+
+
+
+
+
 .piatto {
   background: white;
   border-radius: 10px;
@@ -245,6 +386,13 @@ body {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.piatto:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .piatto h3 {
@@ -255,35 +403,6 @@ body {
   align-self: flex-end;
   font-weight: bold;
 }
-
-/* ===== UTILITY ===== */
-.nascosto,
-#sidebar ul.nascosto {
-  display: none;
-}
-
-
-
-
-
-
-
-
-
-/* ===== PIATTO CLICCABILE ===== */
-.piatto {
-  cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-.piatto:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-
-
-
 
 
 
@@ -326,6 +445,7 @@ body {
   border-radius: 10px;
   margin-bottom: 18px;
   display: block;
+  background-color: var(--colore-sfondo-chiaro);
 }
 
 #dett-nome {
@@ -378,9 +498,18 @@ body {
   font-size: 0.9rem;
 }
 
-/* Allergeni con colore diverso, più "attenzione" */
+/* Allergeni con colore diverso" */
 #dett-allergeni li {
   background-color: #fbeaea;
   border-color: #b3282d;
   color: #b3282d;
+}
+
+
+
+
+/* ===== UTILITY ===== */
+.nascosto,
+#sidebar ul.nascosto {
+  display: none;
 }
