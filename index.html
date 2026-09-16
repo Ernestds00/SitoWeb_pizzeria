@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pizzeria Da Mario - Menù</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>🍕 Pizzeria Da Mario</h1>
+    <p>Il menù, direttamente dal tuo telefono</p>
+  </header>
+
+  <!-- Bottoni per filtrare le categorie -->
+  <nav class="categorie">
+    <button class="filtro attivo" data-categoria="tutte">Tutte</button>
+    <button class="filtro" data-categoria="rosse">Pizze Rosse</button>
+    <button class="filtro" data-categoria="bianche">Pizze Bianche</button>
+    <button class="filtro" data-categoria="bevande">Bevande</button>
+  </nav>
+
+  <main id="menu">
+    <!-- PIZZE ROSSE -->
+    <div class="piatto" data-categoria="rosse">
+      <h3>Margherita</h3>
+      <p>Pomodoro, mozzarella, basilico</p>
+      <span class="prezzo">6,00 €</span>
+    </div>
+
+    <div class="piatto" data-categoria="rosse">
+      <h3>Diavola</h3>
+      <p>Pomodoro, mozzarella, salame piccante</p>
+      <span class="prezzo">7,50 €</span>
+    </div>
+
+    <!-- PIZZE BIANCHE -->
+    <div class="piatto" data-categoria="bianche">
+      <h3>Quattro Formaggi</h3>
+      <p>Mozzarella, gorgonzola, parmigiano, fontina</p>
+      <span class="prezzo">8,00 €</span>
+    </div>
+
+    <!-- BEVANDE -->
+    <div class="piatto" data-categoria="bevande">
+      <h3>Coca Cola</h3>
+      <p>33 cl</p>
+      <span class="prezzo">3,00 €</span>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
