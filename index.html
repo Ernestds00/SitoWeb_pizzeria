@@ -25,12 +25,24 @@
     <h2>🍕 Da Mario</h2>
     <ul>
       <li><a href="#" class="link-nav attivo" data-target="home">Home</a></li>
-      <li><a href="#" class="link-nav" data-categoria="tutte">Menù Completo</a></li>
-      <li><a href="#" class="link-nav" data-categoria="sfizioserie">Sfizioserie</a></li>
-      <li><a href="#" class="link-nav" data-categoria="classiche">Pizze Classiche</a></li>
-      <li><a href="#" class="link-nav" data-categoria="gourmet">Pizze Gourmet</a></li>
-      <li><a href="#" class="link-nav" data-categoria="bevande">Bevande</a></li>
-      <li><a href="#" class="link-nav" data-categoria="dolci">Dolci</a></li>
+      <li><a href="#" class="link-nav" data-target="chi-siamo">Chi Siamo</a></li>
+
+      <li class="voce-espandibile">
+        <a href="#" id="toggle-menu" data-target="menu">
+          Menù
+          <span class="freccia">▾</span>
+        </a>
+        <ul id="sottomenu" class="sottomenu nascosto">
+          <li><a href="#" class="link-nav" data-categoria="tutte">Menù Completo</a></li>
+          <li><a href="#" class="link-nav" data-categoria="sfizioserie">Sfizioserie</a></li>
+          <li><a href="#" class="link-nav" data-categoria="classiche">Pizze Classiche</a></li>
+          <li><a href="#" class="link-nav" data-categoria="gourmet">Pizze Gourmet</a></li>
+          <li><a href="#" class="link-nav" data-categoria="bevande">Bevande</a></li>
+          <li><a href="#" class="link-nav" data-categoria="dolci">Dolci</a></li>
+        </ul>
+      </li>
+
+      <li><a href="#" class="link-nav" data-target="contattaci">Contattaci</a></li>
     </ul>
   </nav>
 
@@ -38,11 +50,19 @@
   <section id="home">
     <div class="hero">
       <div class="hero-testo">
-        <h1>Chi Siamo</h1>
-        <p>Scopri la nostra storia</p>
+        <h1>Pizzeria Da Mario</h1>
+        <p>Tradizione napoletana dal 1987</p>
       </div>
     </div>
+  </section>
 
+  <!-- SEZIONE CHI SIAMO -->
+  <section id="chi-siamo" class="nascosto">
+    <div class="hero hero-piccolo">
+      <div class="hero-testo">
+        <h1>Chi Siamo</h1>
+      </div>
+    </div>
     <div class="chi-siamo-testo">
       <h2>La nostra storia</h2>
       <p>
@@ -125,6 +145,24 @@
       </div>
 
     </main>
+  </section>
+
+  <!-- SEZIONE CONTATTACI -->
+  <section id="contattaci" class="nascosto">
+    <div class="hero hero-piccolo">
+      <div class="hero-testo">
+        <h1>Contattaci</h1>
+      </div>
+    </div>
+    <div class="contatti-testo">
+      <h2>Dove siamo</h2>
+      <p>📍 Via Roma 12, 80100 Napoli (NA)</p>
+      <p>📞 081 123 4567</p>
+      <p>✉️ info@pizzeriadamario.it</p>
+
+      <h2>Orari di apertura</h2>
+      <p>Lunedì - Domenica: 12:00 - 15:00 / 19:00 - 23:30</p>
+    </div>
   </section>
 
   <script src="script.js"></script>

@@ -3,8 +3,18 @@ const sidebar = document.getElementById("sidebar");
 const overlay = document.getElementById("overlay");
 const linkNav = document.querySelectorAll(".link-nav");
 
-const home = document.getElementById("home");
-const menuPage = document.getElementById("menu-page");
+const toggleMenu = document.getElementById("toggle-menu");
+const sottomenu = document.getElementById("sottomenu");
+const voceEspandibile = document.querySelector(".voce-espandibile");
+
+// Tutte le sezioni "pagina"
+const sezioni = {
+  home: document.getElementById("home"),
+  "chi-siamo": document.getElementById("chi-siamo"),
+  menu: document.getElementById("menu-page"),
+  contattaci: document.getElementById("contattaci")
+};
+
 const titoloCategoria = document.getElementById("titolo-categoria");
 const piatti = document.querySelectorAll(".piatto");
 
@@ -31,32 +41,53 @@ function chiudiMenu() {
 hamburger.addEventListener("click", apriMenu);
 overlay.addEventListener("click", chiudiMenu);
 
-// Click sulle voci del menù
-linkNav.forEach(link => {
+// Mostra solo la sezione richiesta, nasconde le altre
+function mostraSezione(nome) {
+  Object.values(sezioni).forEach(sezione => sezione.classList.add("nascosto"));
+  sezioni[nome].classList.remove("nascosto");
+}
+
+// Click su "Menù" → apre/chiude il sottomenù (non naviga da solo)
+toggleMenu.addEventListener("click", (e) => {
+  e.preventDefault();
+  sottomenu.classList.toggle("nascosto");
+  voceEspandibile.classList.toggle("aperta");
+});
+
+// Click sulle voci dirette: Home, Chi Siamo, Contattaci
+document.querySelectorAll('.link-nav[data-target]').forEach(link => {
   link.addEventListener("click", (e) => {
     e.preventDefault();
 
-    linkNav.forEach(l => l.classList.remove("attivo"));
+    document.querySelectorAll("#sidebar a").forEach(l => l.classList.remove("attivo"));
     link.classList.add("attivo");
 
-    if (link.dataset.target === "home") {
-      home.classList.remove("nascosto");
-      menuPage.classList.add("nascosto");
-    } else {
-      const categoria = link.dataset.categoria;
+    mostraSezione(link.dataset.target);
+    chiudiMenu();
+  });
+});
 
-      home.classList.add("nascosto");
-      menuPage.classList.remove("nascosto");
-      titoloCategoria.textContent = nomiCategorie[categoria];
+// Click sulle voci del sottomenù (categorie di piatti)
+document.querySelectorAll('.sottomenu .link-nav').forEach(link => {
+  link.addEventListener("click", (e) => {
+    e.preventDefault();
 
-      piatti.forEach(piatto => {
-        if (categoria === "tutte" || piatto.dataset.categoria === categoria) {
-          piatto.style.display = "flex";
-        } else {
-          piatto.style.display = "none";
-        }
-      });
-    }
+    document.querySelectorAll("#sidebar a").forEach(l => l.classList.remove("attivo"));
+    link.classList.add("attivo");
+    toggleMenu.classList.add("attivo");
+
+    const categoria = link.dataset.categoria;
+
+    mostraSezione("menu");
+    titoloCategoria.textContent = nomiCategorie[categoria];
+
+    piatti.forEach(piatto => {
+      if (categoria === "tutte" || piatto.dataset.categoria === categoria) {
+        piatto.style.display = "flex";
+      } else {
+        piatto.style.display = "none";
+      }
+    });
 
     chiudiMenu();
   });
