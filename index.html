@@ -20,6 +20,8 @@
   <!-- Sfondo scuro quando il menù è aperto -->
   <div id="overlay"></div>
 
+
+
   <!-- Pannello laterale -->
   <nav id="sidebar">
     <h2>🍕 Da Mario</h2>
@@ -46,6 +48,11 @@
     </ul>
   </nav>
 
+
+
+
+
+
   <!-- SEZIONE HOME -->
   <section id="home">
     <div class="hero">
@@ -55,6 +62,12 @@
       </div>
     </div>
   </section>
+
+
+
+
+
+
 
   <!-- SEZIONE CHI SIAMO -->
   <section id="chi-siamo" class="nascosto">
@@ -79,6 +92,10 @@
     </div>
   </section>
 
+
+
+
+
   <!-- SEZIONE MENÙ -->
   <section id="menu-page" class="nascosto">
     <h2 id="titolo-categoria">Menù Completo</h2>
@@ -86,59 +103,59 @@
     <main id="menu">
 
       <!-- SFIZIOSERIE -->
-      <div class="piatto" data-categoria="sfizioserie">
+      <div class="piatto" data-categoria="sfizioserie" data-id="patatine">
         <h3>Patatine fritte</h3>
         <p>Patatine stick locali</p>
         <span class="prezzo">4,00 €</span>
       </div>
 
-      <div class="piatto" data-categoria="sfizioserie">
+      <div class="piatto" data-categoria="sfizioserie" data-id="montanara">
         <h3>Montanara</h3>
         <p>Impasto pizza fritta, salsa, basilico</p>
         <span class="prezzo">7,50 €</span>
       </div>
 
-      <div class="piatto" data-categoria="sfizioserie">
+      <div class="piatto" data-categoria="sfizioserie" data-id="frittatina">
         <h3>Frittatina di pasta</h3>
         <p>Bucatini conditi con besciamella, piselli, prosciutto e provola</p>
         <span class="prezzo">7,50 €</span>
       </div>
 
       <!-- PIZZE CLASSICHE -->
-      <div class="piatto" data-categoria="classiche">
+      <div class="piatto" data-categoria="classiche" data-id="margherita">
         <h3>Margherita</h3>
         <p>Pomodoro, mozzarella, basilico</p>
         <span class="prezzo">6,00 €</span>
       </div>
 
-      <div class="piatto" data-categoria="classiche">
+      <div class="piatto" data-categoria="classiche" data-id="diavola">
         <h3>Diavola</h3>
         <p>Pomodoro, mozzarella, salame piccante</p>
         <span class="prezzo">7,50 €</span>
       </div>
 
       <!-- PIZZE GOURMET -->
-      <div class="piatto" data-categoria="gourmet">
+      <div class="piatto" data-categoria="gourmet" data-id="quattroformaggi">
         <h3>Quattro Formaggi</h3>
         <p>Mozzarella, gorgonzola, parmigiano, fontina</p>
         <span class="prezzo">8,00 €</span>
       </div>
 
       <!-- BEVANDE -->
-      <div class="piatto" data-categoria="bevande">
+      <div class="piatto" data-categoria="bevande" data-id="cocacola">
         <h3>Coca Cola</h3>
         <p>33 cl</p>
         <span class="prezzo">3,00 €</span>
       </div>
 
-      <div class="piatto" data-categoria="bevande">
+      <div class="piatto" data-categoria="bevande" data-id="estathe">
         <h3>EstaTHE</h3>
         <p>33 cl</p>
         <span class="prezzo">3,00 €</span>
       </div>
 
       <!-- DOLCI -->
-      <div class="piatto" data-categoria="dolci">
+      <div class="piatto" data-categoria="dolci" data-id="tiramisu">
         <h3>Tiramisù</h3>
         <p>Crema, savoiardi, caffè, cacao</p>
         <span class="prezzo">3,00 €</span>
@@ -146,6 +163,38 @@
 
     </main>
   </section>
+
+
+
+
+
+
+  <!-- SEZIONE DETTAGLIO PIATTO -->
+  <section id="dettaglio-piatto" class="nascosto">
+    <button id="btn-indietro">← Torna al menù</button>
+
+    <div class="dettaglio-contenuto">
+      <h2 id="dett-nome">Nome piatto</h2>
+      <span id="dett-prezzo" class="dett-prezzo">0,00 €</span>
+
+      <p id="dett-descrizione" class="dett-descrizione"></p>
+
+      <div class="dett-blocco">
+        <h3>Ingredienti</h3>
+        <ul id="dett-ingredienti"></ul>
+      </div>
+
+      <div class="dett-blocco">
+        <h3>Allergeni</h3>
+        <ul id="dett-allergeni"></ul>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
 
   <!-- SEZIONE CONTATTACI -->
   <section id="contattaci" class="nascosto">
