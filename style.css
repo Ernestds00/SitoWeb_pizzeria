@@ -148,18 +148,38 @@ body {
   height: 45vh;
 }
 
+
 .hero-testo h1 {
   font-family: 'Playfair Display', serif;
   font-size: 3rem;
   color: #fdf6ec;
   margin-bottom: 10px;
+  animation: arrivaAddosso 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 
 .hero-testo p {
   color: #e0a458;
   font-size: 1.2rem;
   letter-spacing: 1px;
+  animation: arrivaAddosso 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: 0.25s;
 }
+
+@keyframes arrivaAddosso {
+  0% {
+    opacity: 0;
+    transform: scale(4);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+
+
+
 
 /* ===== TESTO CHI SIAMO / CONTATTACI — sfondo chiaro uniforme ===== */
 #chi-siamo,
