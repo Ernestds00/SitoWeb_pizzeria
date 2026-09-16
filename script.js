@@ -27,6 +27,7 @@ const nomiCategorie = {
   dolci: "Dolci"
 };
 
+
 // ===== DATI DI OGNI PIATTO (nome, descrizione, ingredienti, allergeni, prezzo) =====
 const datiPiatti = {
   patatine: {
@@ -55,7 +56,8 @@ const datiPiatti = {
     prezzo: "6,00 €",
     descrizione: "La regina delle pizze napoletane: pomodoro San Marzano, mozzarella fiordilatte e basilico fresco, cotta nel forno a legna.",
     ingredienti: ["Farina", "Pomodoro San Marzano", "Mozzarella fiordilatte", "Basilico", "Olio extravergine d'oliva"],
-    allergeni: ["Glutine", "Latte"]
+    allergeni: ["Glutine", "Latte"],
+    immagine: "img/margherita.jpg"
   },
   diavola: {
     nome: "Diavola",
@@ -93,6 +95,8 @@ const datiPiatti = {
     allergeni: ["Glutine", "Latte", "Uova"]
   }
 };
+
+
 
 // Apri/chiudi il pannello laterale
 function apriMenu() {
@@ -149,6 +153,7 @@ document.querySelectorAll('.sottomenu .link-nav').forEach(link => {
     mostraSezione("menu");
     titoloCategoria.textContent = nomiCategorie[categoria];
 
+
     piatti.forEach(piatto => {
       if (categoria === "tutte" || piatto.dataset.categoria === categoria) {
         piatto.style.display = "flex";
@@ -168,6 +173,8 @@ const detDescrizione = document.getElementById("dett-descrizione");
 const detIngredienti = document.getElementById("dett-ingredienti");
 const detAllergeni = document.getElementById("dett-allergeni");
 const btnIndietro = document.getElementById("btn-indietro");
+const detImmagine = document.getElementById("dett-immagine");
+
 
 piatti.forEach(piatto => {
   piatto.addEventListener("click", () => {
@@ -177,6 +184,8 @@ piatti.forEach(piatto => {
     if (!info) return; // sicurezza, nel caso manchi un id nei dati
 
     detNome.textContent = info.nome;
+    detImmagine.src = info.immagine;
+    detImmagine.alt = info.nome;
     detPrezzo.textContent = info.prezzo;
     detDescrizione.textContent = info.descrizione;
 
