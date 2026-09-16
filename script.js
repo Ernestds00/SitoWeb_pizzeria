@@ -1,21 +1,63 @@
-const bottoni = document.querySelectorAll(".filtro");
+const hamburger = document.getElementById("hamburger");
+const sidebar = document.getElementById("sidebar");
+const overlay = document.getElementById("overlay");
+const linkNav = document.querySelectorAll(".link-nav");
+
+const home = document.getElementById("home");
+const menuPage = document.getElementById("menu-page");
+const titoloCategoria = document.getElementById("titolo-categoria");
 const piatti = document.querySelectorAll(".piatto");
 
-bottoni.forEach(bottone => {
-  bottone.addEventListener("click", () => {
+const nomiCategorie = {
+  tutte: "Menù Completo",
+  sfizioserie: "Sfizioserie",
+  classiche: "Pizze Classiche",
+  gourmet: "Pizze Gourmet",
+  bevande: "Bevande",
+  dolci: "Dolci"
+};
 
-    // Toglie "attivo" da tutti i bottoni e lo aggiunge solo a quello cliccato
-    bottoni.forEach(b => b.classList.remove("attivo"));
-    bottone.classList.add("attivo");
+// Apri/chiudi il pannello laterale
+function apriMenu() {
+  sidebar.classList.add("aperto");
+  overlay.classList.add("visibile");
+}
 
-    const categoriaScelta = bottone.dataset.categoria;
+function chiudiMenu() {
+  sidebar.classList.remove("aperto");
+  overlay.classList.remove("visibile");
+}
 
-    piatti.forEach(piatto => {
-      if (categoriaScelta === "tutte" || piatto.dataset.categoria === categoriaScelta) {
-        piatto.style.display = "flex";
-      } else {
-        piatto.style.display = "none";
-      }
-    });
+hamburger.addEventListener("click", apriMenu);
+overlay.addEventListener("click", chiudiMenu);
+
+// Click sulle voci del menù
+linkNav.forEach(link => {
+  link.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    linkNav.forEach(l => l.classList.remove("attivo"));
+    link.classList.add("attivo");
+
+    if (link.dataset.target === "home") {
+      home.classList.remove("nascosto");
+      menuPage.classList.add("nascosto");
+    } else {
+      const categoria = link.dataset.categoria;
+
+      home.classList.add("nascosto");
+      menuPage.classList.remove("nascosto");
+      titoloCategoria.textContent = nomiCategorie[categoria];
+
+      piatti.forEach(piatto => {
+        if (categoria === "tutte" || piatto.dataset.categoria === categoria) {
+          piatto.style.display = "flex";
+        } else {
+          piatto.style.display = "none";
+        }
+      });
+    }
+
+    chiudiMenu();
   });
 });

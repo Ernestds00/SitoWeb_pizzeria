@@ -3,52 +3,129 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pizzeria Da Mario - Menù</title>
+  <title>Pizzeria Da Mario</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Segoe+UI&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <header>
-    <h1>🍕 Pizzeria Da Mario</h1>
-    <p>Il menù, direttamente dal tuo telefono</p>
-  </header>
+  <!-- Bottone hamburger -->
+  <button id="hamburger" aria-label="Apri menù">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 
-  <!-- Bottoni per filtrare le categorie -->
-  <nav class="categorie">
-    <button class="filtro attivo" data-categoria="tutte">Tutte</button>
-    <button class="filtro" data-categoria="rosse">Pizze Rosse</button>
-    <button class="filtro" data-categoria="bianche">Pizze Bianche</button>
-    <button class="filtro" data-categoria="bevande">Bevande</button>
+  <!-- Sfondo scuro quando il menù è aperto -->
+  <div id="overlay"></div>
+
+  <!-- Pannello laterale -->
+  <nav id="sidebar">
+    <h2>🍕 Da Mario</h2>
+    <ul>
+      <li><a href="#" class="link-nav attivo" data-target="home">Home</a></li>
+      <li><a href="#" class="link-nav" data-categoria="tutte">Menù Completo</a></li>
+      <li><a href="#" class="link-nav" data-categoria="sfizioserie">Sfizioserie</a></li>
+      <li><a href="#" class="link-nav" data-categoria="classiche">Pizze Classiche</a></li>
+      <li><a href="#" class="link-nav" data-categoria="gourmet">Pizze Gourmet</a></li>
+      <li><a href="#" class="link-nav" data-categoria="bevande">Bevande</a></li>
+      <li><a href="#" class="link-nav" data-categoria="dolci">Dolci</a></li>
+    </ul>
   </nav>
 
-  <main id="menu">
-    <!-- PIZZE ROSSE -->
-    <div class="piatto" data-categoria="rosse">
-      <h3>Margherita</h3>
-      <p>Pomodoro, mozzarella, basilico</p>
-      <span class="prezzo">6,00 €</span>
+  <!-- SEZIONE HOME -->
+  <section id="home">
+    <div class="hero">
+      <div class="hero-testo">
+        <h1>Chi Siamo</h1>
+        <p>Scopri la nostra storia</p>
+      </div>
     </div>
 
-    <div class="piatto" data-categoria="rosse">
-      <h3>Diavola</h3>
-      <p>Pomodoro, mozzarella, salame piccante</p>
-      <span class="prezzo">7,50 €</span>
+    <div class="chi-siamo-testo">
+      <h2>La nostra storia</h2>
+      <p>
+        Dal 1987 la Pizzeria Da Mario porta in tavola la vera tradizione napoletana:
+        impasto lievitato 24 ore, forno a legna e ingredienti selezionati ogni giorno
+        dai migliori produttori locali. Ogni pizza nasce dalle mani della nostra famiglia,
+        con la stessa passione del primo giorno.
+      </p>
+      <p>
+        Vieni a trovarci, siediti, e lasciati avvolgere dal profumo del basilico fresco
+        e della mozzarella che fonde lentamente. Qui non serviamo solo pizza: raccontiamo
+        una storia lunga tre generazioni.
+      </p>
     </div>
+  </section>
 
-    <!-- PIZZE BIANCHE -->
-    <div class="piatto" data-categoria="bianche">
-      <h3>Quattro Formaggi</h3>
-      <p>Mozzarella, gorgonzola, parmigiano, fontina</p>
-      <span class="prezzo">8,00 €</span>
-    </div>
+  <!-- SEZIONE MENÙ -->
+  <section id="menu-page" class="nascosto">
+    <h2 id="titolo-categoria">Menù Completo</h2>
 
-    <!-- BEVANDE -->
-    <div class="piatto" data-categoria="bevande">
-      <h3>Coca Cola</h3>
-      <p>33 cl</p>
-      <span class="prezzo">3,00 €</span>
-    </div>
-  </main>
+    <main id="menu">
+
+      <!-- SFIZIOSERIE -->
+      <div class="piatto" data-categoria="sfizioserie">
+        <h3>Patatine fritte</h3>
+        <p>Patatine stick locali</p>
+        <span class="prezzo">4,00 €</span>
+      </div>
+
+      <div class="piatto" data-categoria="sfizioserie">
+        <h3>Montanara</h3>
+        <p>Impasto pizza fritta, salsa, basilico</p>
+        <span class="prezzo">7,50 €</span>
+      </div>
+
+      <div class="piatto" data-categoria="sfizioserie">
+        <h3>Frittatina di pasta</h3>
+        <p>Bucatini conditi con besciamella, piselli, prosciutto e provola</p>
+        <span class="prezzo">7,50 €</span>
+      </div>
+
+      <!-- PIZZE CLASSICHE -->
+      <div class="piatto" data-categoria="classiche">
+        <h3>Margherita</h3>
+        <p>Pomodoro, mozzarella, basilico</p>
+        <span class="prezzo">6,00 €</span>
+      </div>
+
+      <div class="piatto" data-categoria="classiche">
+        <h3>Diavola</h3>
+        <p>Pomodoro, mozzarella, salame piccante</p>
+        <span class="prezzo">7,50 €</span>
+      </div>
+
+      <!-- PIZZE GOURMET -->
+      <div class="piatto" data-categoria="gourmet">
+        <h3>Quattro Formaggi</h3>
+        <p>Mozzarella, gorgonzola, parmigiano, fontina</p>
+        <span class="prezzo">8,00 €</span>
+      </div>
+
+      <!-- BEVANDE -->
+      <div class="piatto" data-categoria="bevande">
+        <h3>Coca Cola</h3>
+        <p>33 cl</p>
+        <span class="prezzo">3,00 €</span>
+      </div>
+
+      <div class="piatto" data-categoria="bevande">
+        <h3>EstaTHE</h3>
+        <p>33 cl</p>
+        <span class="prezzo">3,00 €</span>
+      </div>
+
+      <!-- DOLCI -->
+      <div class="piatto" data-categoria="dolci">
+        <h3>Tiramisù</h3>
+        <p>Crema, savoiardi, caffè, cacao</p>
+        <span class="prezzo">3,00 €</span>
+      </div>
+
+    </main>
+  </section>
 
   <script src="script.js"></script>
 </body>
