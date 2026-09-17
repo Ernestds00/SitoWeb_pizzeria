@@ -10,15 +10,15 @@
 </head>
 <body>
 
-  <!-- Bottone hamburger -->
-  <button id="hamburger" aria-label="Apri menù">
+  <!-- Bottone menu -->
+  <button id="bottone-menu" aria-label="Apri menù">
     <span></span>
     <span></span>
     <span></span>
   </button>
 
   <!-- Sfondo scuro quando il menù è aperto -->
-  <div id="overlay"></div>
+  <div id="sfondo-scuro"></div>
 
   <!-- Pannello laterale -->
   <nav id="sidebar">
@@ -112,7 +112,7 @@
 
     <main id="menu">
 	
-      <!-- SFIZIOSERIE -->
+
       <!-- SFIZIOSERIE -->
       <h3 class="titolo-sottosezione" data-categoria="sfizioserie">SFIZIOSERIE</h3>
       <div class="piatto" data-categoria="sfizioserie" data-id="patatine">
@@ -133,27 +133,45 @@
         <span class="prezzo">7,50 €</span>
       </div>
 
+
+
       <!-- PIZZE CLASSICHE -->
       <h3 class="titolo-sottosezione" data-categoria="classiche">PIZZE CLASSICHE</h3>
       <div class="piatto" data-categoria="classiche" data-id="margherita">
-        <h3>Margherita</h3>
-        <p>Pomodoro, mozzarella, basilico</p>
-        <span class="prezzo">6,00 €</span>
+	<img src="img/margherita.jpg" alt="Margherita" class="piatto-img">
+        <div class="piatto-info">
+	     <h3>Margherita</h3>
+             <p>Pomodoro, mozzarella, basilico</p>
+             <span class="prezzo">6,00 €</span>
+        </div>
       </div>
 
-      <div class="piatto" data-categoria="classiche" data-id="diavola">
-        <h3>Diavola</h3>
-        <p>Pomodoro, mozzarella, salame piccante</p>
-        <span class="prezzo">7,50 €</span>
+      <div class="piatto" data-categoria="classiche" data-id="margherita">
+	<img src="img/diavola.jpg" alt="Diavola" class="piatto-img">
+        <div class="piatto-info">
+	     <h3>Diavola</h3>
+             <p>Pomodoro, mozzarella, salame piccante</p>
+             <span class="prezzo">7,00 €</span>
+        </div>
       </div>
+
+
+
 
       <!-- PIZZE GOURMET -->
       <h3 class="titolo-sottosezione" data-categoria="gourmet">PIZZE GOURMET</h3>
-      <div class="piatto" data-categoria="gourmet" data-id="quattroformaggi">
-        <h3>Quattro Formaggi</h3>
-        <p>Mozzarella, gorgonzola, parmigiano, fontina</p>
-        <span class="prezzo">8,00 €</span>
+      <div class="piatto" data-categoria="gourmet" data-id="peperina">
+	<img src="img/peperina.jpg" alt="Peperina" class="piatto-img">
+        <div class="piatto-info">
+	     <h3>Peperina</h3>
+             <p>Pomodoro, fior di latte, salame piccante, pomodorini gialli, stracciata</p>
+             <span class="prezzo">10,00 €</span>
+        </div>
       </div>
+
+
+
+
 
       <!-- BEVANDE -->
       <h3 class="titolo-sottosezione" data-categoria="bevande">BEVANDE</h3>
@@ -168,6 +186,7 @@
         <p>33 cl</p>
         <span class="prezzo">3,00 €</span>
       </div>
+
 
       <!-- DOLCI -->
       <h3 class="titolo-sottosezione" data-categoria="dolci">DOLCI</h3>

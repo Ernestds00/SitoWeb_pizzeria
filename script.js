@@ -1,6 +1,6 @@
-const hamburger = document.getElementById("hamburger");
+const bottoneMenu = document.getElementById("bottone-menu");
 const sidebar = document.getElementById("sidebar");
-const overlay = document.getElementById("overlay");
+const sfondoScuro = document.getElementById("sfondo-scuro");
 
 const toggleMenu = document.getElementById("toggle-menu");
 const sottomenu = document.getElementById("sottomenu");
@@ -69,13 +69,13 @@ const datiPiatti = {
     allergeni: ["Glutine", "Latte"],
     immagine: "img/diavola.jpg"
   },
-  quattroformaggi: {
-    nome: "Quattro Formaggi",
+  peperina: {
+    nome: "Peperina",
     prezzo: "8,00 €",
-    descrizione: "Un tripudio di formaggi: mozzarella, gorgonzola, parmigiano e fontina, per un gusto ricco e deciso.",
-    ingredienti: ["Farina", "Mozzarella fiordilatte", "Gorgonzola", "Parmigiano Reggiano", "Fontina"],
+    descrizione: "Un mix di sapori che faranno pizzicare il tuo palato.",
+    ingredienti: ["Farina", "Pomodoro", "Mozzarella fiordilatte", "Salame piccante", "Pomodorini gialli", "Stracciatella"],
     allergeni: ["Glutine", "Latte"],
-    immagine: "img/quattroformaggi.jpg"
+    immagine: "img/peperina.jpg"
   },
   cocacola: {
     nome: "Coca Cola",
@@ -103,19 +103,22 @@ const datiPiatti = {
   }
 };
 
+
+
+
 // Apri/chiudi il pannello laterale
 function apriMenu() {
   sidebar.classList.add("aperto");
-  overlay.classList.add("visibile");
+  sfondoScuro.classList.add("visibile");
 }
 
 function chiudiMenu() {
   sidebar.classList.remove("aperto");
-  overlay.classList.remove("visibile");
+  sfondoScuro.classList.remove("visibile");
 }
 
-hamburger.addEventListener("click", apriMenu);
-overlay.addEventListener("click", chiudiMenu);
+bottoneMenu.addEventListener("click", apriMenu);
+sfondoScuro.addEventListener("click", chiudiMenu);
 
 // Mostra solo la sezione richiesta, nasconde le altre
 function mostraSezione(nome) {
