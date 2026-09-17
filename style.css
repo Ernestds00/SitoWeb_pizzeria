@@ -532,3 +532,123 @@ body {
 #sidebar ul.nascosto {
   display: none;
 }
+
+
+
+
+
+
+/* ===== BOTTONE "INFORMAZIONI RAPIDE" IN HOME ===== */
+.sezione-info-rapide {
+  text-align: center;
+  padding: 10px 20px 60px;
+  background-color: var(--colore-sfondo-chiaro);
+}
+
+.pulsante-info {
+  background: none;
+  border: 2px solid var(--colore-marrone);
+  color: var(--colore-marrone);
+  padding: 12px 26px;
+  border-radius: 30px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.pulsante-info:hover {
+  background-color: var(--colore-marrone);
+  color: white;
+}
+
+/* ===== SFONDO SCURO DIETRO AL PANNELLO INFO ===== */
+#sfondo-scuro-info {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 1100;
+}
+
+#sfondo-scuro-info.visibile {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ===== PANNELLO INFORMAZIONI (bottom sheet) ===== */
+#pannello-info {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 55vh;
+  background: white;
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
+  padding: 30px 25px;
+  z-index: 1200;
+  transform: translateY(100%);
+  transition: transform 0.35s ease;
+  overflow-y: auto;
+}
+
+#pannello-info.aperto {
+  transform: translateY(0);
+}
+
+#btn-chiudi-info {
+  position: absolute;
+  top: 15px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  color: #999;
+  cursor: pointer;
+}
+
+#pannello-info h2 {
+  font-family: 'Playfair Display', serif;
+  color: #b3282d;
+  margin-bottom: 10px;
+}
+
+.info-intro {
+  color: #666;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+}
+
+.legenda-badge {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.legenda-badge li {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.badge-icona {
+  font-size: 1.2rem;
+  margin-right: 6px;
+}
+
+
+.badge-container {
+  display: flex;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+#dett-badge {
+  margin-bottom: 14px;
+}
+
+.badge-piatto {
+  font-size: 1.1rem;
+}

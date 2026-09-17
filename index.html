@@ -74,6 +74,13 @@
         <p>Dove siamo e come contattarci</p>
       </div>
     </div>
+
+    <div class="sezione-info-rapide">
+      <button id="btn-info-rapide" class="pulsante-info">
+        📋 Scopri le informazioni rapide
+      </button>
+    </div>
+
   </section>
 
 
@@ -146,7 +153,7 @@
         </div>
       </div>
 
-      <div class="piatto" data-categoria="classiche" data-id="diavola">
+      <div class="piatto" data-categoria="classiche" data-id="diavola" data-badge="piccante">  <!-- data-badge per inserire il badge relativo alla pizza -->
 	<img src="img/diavola.jpg" alt="Diavola" class="piatto-img">
         <div class="piatto-info">
 	     <h3>Diavola</h3>
@@ -160,7 +167,7 @@
 
       <!-- PIZZE GOURMET -->
       <h3 class="titolo-sottosezione" data-categoria="gourmet">PIZZE GOURMET</h3>
-      <div class="piatto" data-categoria="gourmet" data-id="peperina">
+      <div class="piatto" data-categoria="gourmet" data-id="peperina" data-badge="piccante, consigliato">
 	<img src="img/peperina.jpg" alt="Peperina" class="piatto-img">
         <div class="piatto-info">
 	     <h3>Peperina</h3>
@@ -211,6 +218,8 @@
       <img id="dett-immagine" src="" alt="" class="dett-img">
       <h2 id="dett-nome">Nome piatto</h2>
       <span id="dett-prezzo" class="dett-prezzo">0,00 €</span>
+      
+      <div id="dett-badge" class="badge-container"></div>  <!-- creo un contenitore per i badge -->
 
       <p id="dett-descrizione" class="dett-descrizione"></p>
 
@@ -250,9 +259,28 @@
   </section>
 
 
+  
 
+  <!-- SFONDO SCURO per il pannello informazioni -->
+  <div id="sfondo-scuro-info"></div>
 
+  <!-- PANNELLO INFORMAZIONI RAPIDE (scorre dal basso) -->
+  <div id="pannello-info">
+    <button id="btn-chiudi-info" aria-label="Chiudi">✕</button>
+
+    <h2>Informazioni rapide</h2>
+    <p class="info-intro">Ecco cosa significano le etichette che trovi vicino ad alcuni piatti:</p>
+
+    <ul class="legenda-badge">
+      <li><span class="badge-icona">🌶️</span> <strong>Piccante</strong> — contiene ingredienti piccanti</li>
+      <li><span class="badge-icona">🌱</span> <strong>Vegetariano</strong> — senza carne né pesce</li>
+      <li><span class="badge-icona">⭐</span> <strong>Consigliato</strong> — la scelta dello chef</li>
+      <li><span class="badge-icona">🔥</span> <strong>Novità</strong> — appena aggiunto al menù</li>
+    </ul>
+  </div>
 
   <script src="script.js"></script>
+
+
 </body>
 </html>

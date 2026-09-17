@@ -6,6 +6,9 @@ const toggleMenu = document.getElementById("toggle-menu");
 const sottomenu = document.getElementById("sottomenu");
 const voceEspandibile = document.querySelector(".voce-espandibile");
 
+const detBadge = document.getElementById("dett-badge");
+
+
 // Tutte le sezioni "pagina"
 const sezioni = {
   home: document.getElementById("home"),
@@ -26,6 +29,30 @@ const nomiCategorie = {
   bevande: "Bevande",
   dolci: "Dolci"
 };
+
+const mappaBadge = {
+  piccante: { icona: "🌶️", nome: "Piccante" },
+  vegetariano: { icona: "🌱", nome: "Vegetariano" },
+  consigliato: { icona: "⭐", nome: "Consigliato" },
+  novita: { icona: "🔥", nome: "Novità" }
+};
+
+// Genera l'HTML delle icone badge a partire da una stringa tipo "piccante,vegetariano"
+function generaBadgeHTML(stringaBadge) {
+  if (!stringaBadge) return "";
+
+  const chiavi = stringaBadge.split(",").map(c => c.trim());
+  return chiavi
+    .map(chiave => {
+      const badge = mappaBadge[chiave];
+      if (!badge) return "";
+      return `<span class="badge-piatto" title="${badge.nome}">${badge.icona}</span>`;
+    })
+    .join("");
+}
+
+
+
 
 // ===== DATI DI OGNI PIATTO (nome, descrizione, ingredienti, allergeni, prezzo, immagine) =====
 const datiPiatti = {
@@ -63,19 +90,21 @@ const datiPiatti = {
   },
   diavola: {
     nome: "Diavola",
-    prezzo: "7,50 €",
+    prezzo: "7,00 €",
     descrizione: "Pomodoro, mozzarella e salame piccante, per chi ama un tocco di peperoncino in più.",
     ingredienti: ["Farina", "Pomodoro", "Mozzarella fiordilatte", "Salame piccante"],
     allergeni: ["Glutine", "Latte"],
-    immagine: "img/diavola.jpg"
+    immagine: "img/diavola.jpg",
+    badge: "piccante"
   },
   peperina: {
     nome: "Peperina",
-    prezzo: "8,00 €",
+    prezzo: "10,00 €",
     descrizione: "Un mix di sapori che faranno pizzicare il tuo palato.",
     ingredienti: ["Farina", "Pomodoro", "Mozzarella fiordilatte", "Salame piccante", "Pomodorini gialli", "Stracciatella"],
     allergeni: ["Glutine", "Latte"],
-    immagine: "img/peperina.jpg"
+    immagine: "img/peperina.jpg",
+    badge: "piccante, consigliato"
   },
   cocacola: {
     nome: "Coca Cola",
@@ -218,6 +247,7 @@ piatti.forEach(piatto => {
     detImmagine.alt = info.nome;
     detPrezzo.textContent = info.prezzo;
     detDescrizione.textContent = info.descrizione;
+    detBadge.innerHTML = generaBadgeHTML(info.badge);
 
     detIngredienti.innerHTML = "";
     info.ingredienti.forEach(ing => {
@@ -280,3 +310,41 @@ document.querySelectorAll(".scheda-sezione").forEach(scheda => {
     mostraSezione(target);
   });
 });
+
+
+
+
+
+// ===== PANNELLO INFORMAZIONI RAPIDE (bottom sheet) =====
+const btnInfoRapide = document.getElementById("btn-info-rapide");
+const pannelloInfo = document.getElementById("pannello-info");
+const sfondoScuroInfo = document.getElementById("sfondo-scuro-info");
+const btnChiudiInfo = document.getElementById("btn-chiudi-info");
+
+function apriPannelloInfo() {
+  pannelloInfo.classList.add("aperto");
+  sfondoScuroInfo.classList.add("visibile");
+}
+
+function chiudiPannelloInfo() {
+  pannelloInfo.classList.remove("aperto");
+  sfondoScuroInfo.classList.remove("visibile");
+}
+
+btnInfoRapide.addEventListener("click", apriPannelloInfo);
+btnChiudiInfo.addEventListener("click", chiudiPannelloInfo);
+sfondoScuroInfo.addEventListener("click", chiudiPannelloInfo);
+
+
+// Inserisce i badge (icone) dentro ogni piatto della lista, leggendo data-badge
+piatti.forEach(piatto => {
+  const badgeHTML = generaBadgeHTML(piatto.dataset.badge);
+  if (badgeHTML) {
+    const contenitoreInfo = piatto.querySelector(".piatto-info");
+    const div = document.createElement("div");
+    div.className = "badge-container";
+    div.innerHTML = badgeHTML;
+    contenitoreInfo.appendChild(div);
+  }
+});
+
